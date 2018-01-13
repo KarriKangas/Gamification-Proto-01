@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 /// <summary>
 /// This is just a boot screen use to start the app
 /// </summary>
@@ -13,6 +14,7 @@ public class Boot : MonoBehaviour
     public Text scanAmountText;
 	void Awake()
 	{
+        APICaller caller = transform.GetComponent<APICaller>();
 		Screen.autorotateToPortrait = true;
 		Screen.autorotateToPortraitUpsideDown = true;
 
@@ -20,7 +22,8 @@ public class Boot : MonoBehaviour
 
 		// Enable vsync for the samples (avoid running mobile device at 300fps)
 		QualitySettings.vSyncCount = 1;
-	}
+        caller.CallAPI();
+    }
 
 	IEnumerator Start()
 	{
@@ -31,7 +34,8 @@ public class Boot : MonoBehaviour
 		{
 			throw new Exception("This Webcam library can't work without the webcam authorization");
 		}
-	}
+
+    }
 
     void Update()
     {
