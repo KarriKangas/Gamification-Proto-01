@@ -47,7 +47,9 @@ public class Boot : MonoBehaviour
 
 	public void OnClickScanner()
 	{
-		SceneManager.LoadScene("Scanner");
+        string n = "ScannerPart";
+        Debug.Log("WHAT LOADED? " + n);
+		SceneManager.LoadScene(n);
 	}
 
 	#endregion

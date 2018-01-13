@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Boot.unity
     guid: 71a689eca1ac8fa46a01b8799a3a8726
   - enabled: 1
-    path: Assets/Scanner/SimpleDemo.unity
+    path: Assets/Scanner/ScannerPart.unity
     guid: 93c1548587961484cb231b7f9c4a0734
