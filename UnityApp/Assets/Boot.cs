@@ -2,16 +2,21 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 /// <summary>
 /// This is just a boot screen use to start the app
 /// </summary>
 public class Boot : MonoBehaviour
 {
+
+    public static int scanAmount = 0;
+    public Text scanAmountText;
 	void Awake()
 	{
 		Screen.autorotateToPortrait = true;
 		Screen.autorotateToPortraitUpsideDown = true;
+
+        scanAmountText = GameObject.Find("ScanText").GetComponent<Text>();
 
 		// Enable vsync for the samples (avoid running mobile device at 300fps)
 		QualitySettings.vSyncCount = 1;
@@ -28,11 +33,17 @@ public class Boot : MonoBehaviour
 		}
 	}
 
+    void Update()
+    {
+        scanAmountText.text = "Scans: " + scanAmount;
+
+    }
+
 	#region UI Buttons
 
-	public void OnClickSimple()
+	public void OnClickScanner()
 	{
-		SceneManager.LoadScene("SimpleDemo");
+		SceneManager.LoadScene("Scanner");
 	}
 
 	#endregion

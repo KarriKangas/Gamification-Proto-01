@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Wizcorp.Utils.Logger;
 
-public class SimpleDemo : MonoBehaviour {
+public class ScannerPart : MonoBehaviour {
 
 	private IScanner BarcodeScanner;
 	public Text TextHeader;
@@ -17,6 +17,8 @@ public class SimpleDemo : MonoBehaviour {
 	// Disable Screen Rotation on that screen
 	void Awake()
 	{
+        Debug.Log(this.transform);
+
 		Screen.autorotateToPortrait = false;
 		Screen.autorotateToPortraitUpsideDown = false;
 	}
@@ -71,6 +73,9 @@ public class SimpleDemo : MonoBehaviour {
 		BarcodeScanner.Scan((barCodeType, barCodeValue) => {
 			BarcodeScanner.Stop();
 			TextHeader.text = "Found: " + barCodeType + " / " + barCodeValue;
+
+            Debug.Log("Doing a API call...");
+            Boot.scanAmount = Boot.scanAmount + 1;
 
 			// Feedback
 			Audio.Play();
