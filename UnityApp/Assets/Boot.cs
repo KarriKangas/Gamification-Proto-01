@@ -14,7 +14,7 @@ public class Boot : MonoBehaviour
     public Text scanAmountText;
 	void Awake()
 	{
-        APICaller caller = transform.GetComponent<APICaller>();
+        //APICaller caller = transform.GetComponent<APICaller>();
 		Screen.autorotateToPortrait = true;
 		Screen.autorotateToPortraitUpsideDown = true;
 
@@ -22,7 +22,7 @@ public class Boot : MonoBehaviour
 
 		// Enable vsync for the samples (avoid running mobile device at 300fps)
 		QualitySettings.vSyncCount = 1;
-        caller.CallAPI();
+        //caller.CallAPI();
     }
 
 	IEnumerator Start()

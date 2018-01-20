@@ -9,6 +9,7 @@ public class APICaller : MonoBehaviour {
     string consumerKey = "ck_dc0ac75eed3e7ba154fdaa2189c425d1717c3a3b";
     string consumerSecret = "cs_9c764fdd279f6325c0573fb0a5f633168b9d5735";
     string requestURL = "";
+
     // Use this for initialization
     void Start () {
 		
@@ -16,15 +17,16 @@ public class APICaller : MonoBehaviour {
 	
 	public void CallAPI()
     {
-        Debug.Log("wut");
-
-
+        //string weatherKey = "c1776ca3a3bc5d5959c2b4201090b5ec";
+        string weatherURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=c1776ca3a3bc5d5959c2b4201090b5ec";
+        /*
         OAuth_CSharp oauth = new OAuth_CSharp(consumerKey, consumerSecret);
         requestURL = oauth.GenerateRequestURL(in_url, "GET");
-
+        */
+        requestURL = weatherURL;
         Debug.Log(requestURL);
         StartCoroutine(Product());
-        //StartCoroutine(Product());
+
         /*API KEYS
         key:
             ck_dc0ac75eed3e7ba154fdaa2189c425d1717c3a3b

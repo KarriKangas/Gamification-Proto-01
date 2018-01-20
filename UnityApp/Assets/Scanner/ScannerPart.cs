@@ -13,17 +13,20 @@ public class ScannerPart : MonoBehaviour {
 	public Text TextHeader;
 	public RawImage Image;
 	public AudioSource Audio;
-
-	// Disable Screen Rotation on that screen
-	void Awake()
+    APICaller caller;
+    // Disable Screen Rotation on that screen
+    void Awake()
 	{
         Debug.Log(this.transform);
 
 		Screen.autorotateToPortrait = false;
 		Screen.autorotateToPortraitUpsideDown = false;
-	}
 
-	void Start () {
+        caller = transform.GetComponent<APICaller>();
+        //caller.CallAPI();
+    }
+
+    void Start () {
 		// Create a basic scanner
 		BarcodeScanner = new Scanner();
 		BarcodeScanner.Camera.Play();
@@ -74,11 +77,15 @@ public class ScannerPart : MonoBehaviour {
 			BarcodeScanner.Stop();
 			TextHeader.text = "Found: " + barCodeType + " / " + barCodeValue;
 
-            Debug.Log("Doing a API call...");
+            Debug.Log("Now scanning...");
             Boot.scanAmount = Boot.scanAmount + 1;
+            caller.CallAPI();
 
-			// Feedback
-			Audio.Play();
+            Debug.Log("Now loading product page...");
+            SceneManager.LoadScene("ProductPage");
+            // Feedback
+            Audio.Play();
+           
 
 			#if UNITY_ANDROID || UNITY_IOS
 			Handheld.Vibrate();
