@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using Wizcorp.Utils.Logger;
 
 public class ScannerPart : MonoBehaviour {
-
+    Data Data;
 	private IScanner BarcodeScanner;
 	public Text TextHeader;
 	public RawImage Image;
@@ -23,6 +23,8 @@ public class ScannerPart : MonoBehaviour {
 		Screen.autorotateToPortraitUpsideDown = false;
 
         caller = transform.GetComponent<APICaller>();
+
+        Data = GameObject.Find("Data").GetComponent<Data>();
         //caller.CallAPI();
     }
 
@@ -55,7 +57,7 @@ public class ScannerPart : MonoBehaviour {
 	/// </summary>
 	void Update()
 	{
-		if (BarcodeScanner == null)
+        if (BarcodeScanner == null)
 		{
 			return;
 		}
@@ -81,6 +83,8 @@ public class ScannerPart : MonoBehaviour {
             Boot.scanAmount = Boot.scanAmount + 1;
             caller.CallAPI();
 
+			Data.scans++;
+            Data.experience = Data.experience + UnityEngine.Random.Range(3, 8);
             Debug.Log("Now loading product page...");
             SceneManager.LoadScene("ProductPage");
             // Feedback
