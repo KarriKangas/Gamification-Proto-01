@@ -9,6 +9,7 @@ public class Data : MonoBehaviour {
     public int requiredExp;
 	public int scans;
     float expFactor;
+	public string currentScanID;
     // Use this for initialization
     void Awake()
     {

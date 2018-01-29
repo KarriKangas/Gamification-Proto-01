@@ -85,7 +85,8 @@ public class ScannerPart : MonoBehaviour {
 
 			Data.scans++;
             Data.experience = Data.experience + UnityEngine.Random.Range(3, 8);
-            Debug.Log("Now loading product page...");
+			Data.currentScanID = barCodeValue;
+			Debug.Log("Now loading product page with ID..." + Data.currentScanID);
             SceneManager.LoadScene("ProductPage");
             // Feedback
             Audio.Play();

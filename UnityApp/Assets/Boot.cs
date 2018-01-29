@@ -23,6 +23,7 @@ public class Boot : MonoBehaviour
 		// Enable vsync for the samples (avoid running mobile device at 300fps)
 		QualitySettings.vSyncCount = 1;
         //caller.CallAPI();
+		Screen.orientation = ScreenOrientation.Portrait;
     }
 
 	IEnumerator Start()
